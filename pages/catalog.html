@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Libros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<!-- Navbar -->
+<nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl font-bold">Biblioteca</h1>
+        <ul class="flex space-x-4">
+            <li><a href="../index.html" class="hover:underline">Inicio</a></li>
+            <li><a href="catalog.html" class="hover:underline">Catálogo</a></li>
+            <li><a href="#" class="hover:underline">Mi Cuenta</a></li>
+            <li><a href="#" class="hover:underline">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contenedor Principal -->
+<div class="container mx-auto px-4 flex mt-6">
+
+    <!-- Sidebar de Filtros -->
+    <aside class="w-1/4 p-4 bg-white shadow-lg rounded-lg">
+        <h2 class="text-xl font-bold mb-4">Filtros</h2>
+
+        <!-- Categorías -->
+        <div class="mb-4">
+            <h3 class="font-semibold">Categorías</h3>
+            <select id="categoriaFiltro" class="w-full p-2 border rounded mt-2">
+                <option value="">Todas</option>
+                <option value="Novela">Novela</option>
+                <option value="Ciencia">Ciencia</option>
+                <option value="Infantil">Infantil</option>
+                <option value="Historia">Historia</option>
+            </select>
+        </div>
+
+        <!-- Disponibilidad -->
+        <div>
+            <h3 class="font-semibold">Disponibilidad</h3>
+            <select id="disponibilidadFiltro" class="w-full p-2 border rounded mt-2">
+                <option value="">Todos</option>
+                <option value="Disponible">Disponible</option>
+            </select>
+        </div>
+    </aside>
+
+    <!-- Sección de Libros -->
+    <section class="w-3/4 ml-6">
+
+        <!-- Barra de Búsqueda -->
+        <div class="mb-4 flex items-center">
+            <input
+                    type="text"
+                    id="buscador"
+                    placeholder="Buscar por título, autor o palabra clave..."
+                    class="w-full p-2 border border-gray-300 rounded"
+            >
+            <button id="buscarBtn" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded">🔍</button>
+        </div>
+
+        <!-- Lista de Libros -->
+        <div id="listaLibros" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+        <!-- Paginación -->
+        <div class="flex justify-center mt-6">
+            <button id="prevPage" class="px-4 py-2 mx-1 bg-gray-300 rounded">◀</button>
+            <span id="pageNumber" class="px-4 py-2">1</span>
+            <button id="nextPage" class="px-4 py-2 mx-1 bg-gray-300 rounded">▶</button>
+        </div>
+
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white text-center p-4 mt-6">
+    <p>&copy; 2024 Biblioteca | <a href="#" class="underline">Términos y Condiciones</a></p>
+</footer>
+
+<script src="../scripts/catalog.js"></script>
+</body>
+</html>

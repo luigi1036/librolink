@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Biblioteca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<!-- Navbar Admin -->
+<nav class="bg-gray-800 p-4 text-white">
+    <div class="container mx-auto flex justify-between">
+        <a href="#" class="font-bold">Admin Panel</a>
+        <div>
+            <a href="#" class="mx-2">Dashboard</a>
+            <a href="#" class="mx-2">Libros</a>
+            <a href="#" class="mx-2">Usuarios</a>
+            <a href="#" class="mx-2">Préstamos</a>
+            <a href="#" class="mx-2">Informes</a>
+            <a href="#" class="mx-2">Configuración</a>
+        </div>
+        <button id="logoutBtn" class="bg-red-500 px-3 py-1 rounded">Cerrar Sesión</button>
+    </div>
+</nav>
+
+<!-- Dashboard de Estadísticas -->
+<div class="container mx-auto mt-6 p-4">
+    <h1 class="text-2xl font-bold text-center mb-6">Panel de Administración</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 shadow-md rounded-lg text-center">
+            <h2 class="text-lg font-bold">Total de Libros</h2>
+            <p class="text-3xl font-bold text-blue-600" id="totalLibros">0</p>
+        </div>
+        <div class="bg-white p-4 shadow-md rounded-lg text-center">
+            <h2 class="text-lg font-bold">Usuarios Activos</h2>
+            <p class="text-3xl font-bold text-green-600" id="usuariosActivos">0</p>
+        </div>
+        <div class="bg-white p-4 shadow-md rounded-lg text-center">
+            <h2 class="text-lg font-bold">Préstamos Activos</h2>
+            <p class="text-3xl font-bold text-yellow-600" id="prestamosActivos">0</p>
+        </div>
+        <div class="bg-white p-4 shadow-md rounded-lg text-center">
+            <h2 class="text-lg font-bold">Préstamos Vencidos</h2>
+            <p class="text-3xl font-bold text-red-600" id="prestamosVencidos">0</p>
+        </div>
+    </div>
+</div>
+
+<!-- Tabla de Gestión -->
+<div class="container mx-auto mt-6 p-4">
+    <h2 class="text-xl font-bold mb-4">Gestión de Libros</h2>
+    <table class="w-full bg-white shadow-md rounded-lg">
+        <thead class="bg-gray-800 text-white">
+        <tr>
+            <th class="p-2">ID</th>
+            <th class="p-2">Título</th>
+            <th class="p-2">Autor</th>
+            <th class="p-2">Disponibilidad</th>
+            <th class="p-2">Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="tablaLibros" class="text-center">
+        <!-- Los libros se insertan aquí dinámicamente -->
+        </tbody>
+    </table>
+</div>
+
+<script src="../scripts/admin.js"></script>
+</body>
+</html>
