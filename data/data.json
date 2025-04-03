@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "image": "img/cien_anos.jpg",
+    "synopsis": "Una historia mágica de la familia Buendía.",
+    "editorial": "Sudamericana",
+    "year": 1967,
+    "gender": "Novela",
+    "available": true
+  },
+  {
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "image": "img/1984.jpg",
+    "synopsis": "Un mundo distópico controlado por el Gran Hermano.",
+    "editorial": "Secker & Warburg",
+    "year": 1949,
+    "gender": "Ciencia Ficción",
+    "available": false
+  },
+  { "id": 3,
+    "title": "El Principito",
+    "author": "Antoine de Saint-Exupéry",
+    "synopsis": "Un niño que viaja por planetas y aprende lecciones de vida.",
+    "editorial": "Gallimard",
+    "year": 1943,
+    "gender": "Infantil",
+    "available": true,
+    "image": "https://via.placeholder.com/200" }
+  ]
+

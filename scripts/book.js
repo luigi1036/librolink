@@ -1,42 +1,70 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Base de datos de libros (simulada)
-    const libros = [
-        { id: 1, titulo: "El Principito", autor: "Antoine de Saint-Exupéry", calificacion: 4.8, sinopsis: "Un niño que viaja por planetas y aprende lecciones de vida.", editorial: "Gallimard", anio: 1943, genero: "Infantil", disponible: true, imagen: "https://via.placeholder.com/200" },
-        { id: 2, titulo: "Cien Años de Soledad", autor: "Gabriel García Márquez", calificacion: 4.7, sinopsis: "La historia de la familia Buendía en Macondo.", editorial: "Sudamericana", anio: 1967, genero: "Novela", disponible: false, imagen: "https://via.placeholder.com/200" },
-        { id: 3, titulo: "Breve Historia del Tiempo", autor: "Stephen Hawking", calificacion: 4.6, sinopsis: "Un viaje fascinante por el universo y el tiempo.", editorial: "Bantam Books", anio: 1988, genero: "Ciencia", disponible: true, imagen: "https://via.placeholder.com/200" }
-    ];
+import { loadBooks, getBookById } from "./data.js";
 
-    // Obtener ID del libro desde la URL
+document.addEventListener("DOMContentLoaded", async () => {
+    // Obtener el ID de la URL
     const params = new URLSearchParams(window.location.search);
-    const libroId = parseInt(params.get("id"));
+    const bookId = params.get("id");
 
-    // Buscar el libro en la base de datos
-    const libro = libros.find(l => l.id === libroId);
+    console.log("id recibido" + bookId);
 
-    if (!libro) {
-        document.body.innerHTML = "<h1 class='text-center text-red-500 mt-10'>Libro no encontrado</h1>";
+    if (bookId == null) {
+        document.getElementById("bookDetail").innerHTML = "<p>Libro no encontrado.</p>";
         return;
     }
 
-    // Insertar datos en la página
-    document.getElementById("imagenLibro").src = libro.imagen;
-    document.getElementById("tituloLibro").textContent = libro.titulo;
-    document.getElementById("autorLibro").textContent = `Autor: ${libro.autor}`;
-    document.getElementById("calificacion").textContent = "⭐".repeat(Math.round(libro.calificacion));
-    document.getElementById("valoracion").textContent = `(${libro.calificacion} de 5)`;
-    document.getElementById("sinopsisLibro").textContent = libro.sinopsis;
-    document.getElementById("editorialLibro").textContent = libro.editorial;
-    document.getElementById("anioLibro").textContent = libro.anio;
-    document.getElementById("generoLibro").textContent = libro.genero;
-    document.getElementById("estadoLibro").textContent = libro.disponible ? "Disponible" : "No disponible";
+    // Cargar los libros desde data.js
+    const book = await getBookById(bookId);
 
-    // Configurar botón de préstamo
-    const botonPrestamo = document.getElementById("botonPrestamo");
-    if (libro.disponible) {
-        botonPrestamo.classList.add("bg-red-500", "hover:bg-red-700");
-        botonPrestamo.addEventListener("click", () => alert("Préstamo solicitado"));
-    } else {
-        botonPrestamo.classList.add("bg-gray-400", "cursor-not-allowed");
-        botonPrestamo.disabled = true;
+    console.log("libors en book " + book);
+    // Buscar el libro por ID
+    //const book = books.find(b => b.id === bookId);
+
+    if (book == null) {
+        document.getElementById("bookDetail").innerHTML = "<p>Libro no encontrado.</p>";
+        return;
     }
+
+
+    // 📌 **Estructura en dos columnas bien organizada**
+    document.getElementById("bookDetail").innerHTML = `
+        <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 📕 Portada del libro -->
+                <div class="flex justify-center">
+                    <img src="${book.image}" alt="${book.title}" class="w-72 h-auto rounded-lg shadow-md">
+                </div>
+
+                <!-- 📜 Detalles del libro -->
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800">${book.title}</h2>
+                    <p class="text-gray-600 text-lg mt-2"><strong>Autor:</strong> ${book.author}</p>
+
+                    <p class="text-gray-500 mt-4"><strong>Género:</strong> ${book.gender}</p>
+                    <p class="text-gray-500"><strong>Año:</strong> ${book.year}</p>
+                   <!-- <p class="text-gray-500"><strong>Editorial:</strong> ${book.publisher}</p> -->
+
+                    <!-- 📖 Sinopsis -->
+                    <p class="mt-4 text-gray-700">${book.synopsis}</p>
+
+                    <!-- 📗 Estado (Disponible / No Disponible) -->
+                    <p class="mt-4 text-lg font-semibold ${book.available ? 'text-green-600' : 'text-red-600'}">
+                        <strong>Estado:</strong> ${book.available ? '📗 Disponible' : '📕 No Disponible'}
+                    </p>
+
+                    <!-- 🛒 Botón de Solicitar Préstamo -->
+                    <button onclick="solicitarPrestamo(${book.id})" 
+                        class="mt-6 px-6 py-3 bg-red-600 text-white text-lg font-semibold rounded-lg shadow-md 
+                               hover:bg-red-700 transition duration-300 ease-in-out disabled:opacity-50"
+                        ${book.available ? '' : 'disabled'}>
+                        📚 Solicitar Préstamo
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
 });
+
+// Función para solicitar un préstamo
+function solicitarPrestamo(bookId) {
+    alert(`Has solicitado el libro con ID: ${bookId}`);
+}
