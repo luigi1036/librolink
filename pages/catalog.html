@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Libros</title>
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -31,7 +32,7 @@
         <!-- Categorías -->
         <div class="mb-4">
             <h3 class="font-semibold">Categorías</h3>
-            <select id="categoriaFiltro" class="w-full p-2 border rounded mt-2">
+            <select id="categoryFilter" class="w-full p-2 border rounded mt-2">
                 <option value="">Todas</option>
                 <option value="Novela">Novela</option>
                 <option value="Ciencia">Ciencia</option>
@@ -43,7 +44,7 @@
         <!-- Disponibilidad -->
         <div>
             <h3 class="font-semibold">Disponibilidad</h3>
-            <select id="disponibilidadFiltro" class="w-full p-2 border rounded mt-2">
+            <select id="availabilityFilter" class="w-full p-2 border rounded mt-2">
                 <option value="">Todos</option>
                 <option value="Disponible">Disponible</option>
             </select>
@@ -57,7 +58,7 @@
         <div class="mb-4 flex items-center">
             <input
                     type="text"
-                    id="buscador"
+                    id="searcher"
                     placeholder="Buscar por título, autor o palabra clave..."
                     class="w-full p-2 border border-gray-300 rounded"
             >
@@ -65,7 +66,7 @@
         </div>
 
         <!-- Lista de Libros -->
-        <div id="listaLibros" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        <div id="bookList" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
 
         <!-- Paginación -->
         <div class="flex justify-center mt-6">
@@ -78,10 +79,10 @@
 </div>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-white text-center p-4 mt-6">
+<footer class="footer">
     <p>&copy; 2024 Biblioteca | <a href="#" class="underline">Términos y Condiciones</a></p>
 </footer>
 
-<script src="../scripts/catalog.js"></script>
+<script type="module" src="../scripts/catalog.js"></script>
 </body>
 </html>

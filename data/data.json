@@ -18,7 +18,7 @@
     "synopsis": "Un mundo distópico controlado por el Gran Hermano.",
     "editorial": "Secker & Warburg",
     "year": 1949,
-    "gender": "Ciencia Ficción",
+    "gender": "Ciencia",
     "available": false
   },
   { "id": 3,
@@ -29,6 +29,17 @@
     "year": 1943,
     "gender": "Infantil",
     "available": true,
-    "image": "https://via.placeholder.com/200" }
+    "image": "https://via.placeholder.com/200"
+  },
+  { "id": 3,
+    "title": "El Principito 2",
+    "author": "Antoine de Saint-Exupéry",
+    "synopsis": "Un niño que viaja por planetas y aprende lecciones de vida.",
+    "editorial": "Gallimard",
+    "year": 1943,
+    "gender": "Infantil",
+    "available": true,
+    "image": "https://via.placeholder.com/200"
+  }
   ]
 
