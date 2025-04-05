@@ -1,34 +1,62 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const btnRegister = document.getElementById("btnRegister");
+    const btnLogin = document.getElementById("btnLogin");
+    const register = document.getElementById("register");
+    const login = document.getElementById("login");
+    const createAccount = document.getElementById("createAccount");
+    const loginS = document.getElementById("loginS");
 
-import {loadBooks} from "./scripts/data.js";
+    // Cambiar entre pestañas de Register/Login
+    btnRegister.addEventListener("click", () => {
+        register.classList.remove("hidden");
+        login.classList.add("hidden");
+        btnRegister.classList.add("bg-blue-600", "text-white");
+        btnLogin.classList.remove("bg-blue-600", "text-white");
+    });
 
-// Redirigir a la página de detalles
-function verDetalles(id) {
-    console.log("este es el id" + id);
-    window.location.href = `./pages/book.html?id=${id}&source=index`;
-}
+    btnLogin.addEventListener("click", () => {
+        login.classList.remove("hidden");
+        register.classList.add("hidden");
+        btnLogin.classList.add("bg-blue-600", "text-white");
+        btnRegister.classList.remove("bg-blue-600", "text-white");
+    });
 
-window.verDetalles = verDetalles;
+    // Crear cuenta
+    createAccount.addEventListener("click", () => {
+        const name = document.getElementById("nameRegister").value;
+        const email = document.getElementById("emailRegister").value;
+        const password = document.getElementById("passwordRegister").value;
 
-document.addEventListener("DOMContentLoaded", async () =>  {
-    const booksList = document.getElementById("booksList");
-    const books = await loadBooks();
+        if (name && email && password) {
+            const user = { name, email, password };
+            localStorage.setItem("user", JSON.stringify(user));
+            alert("Cuenta creada exitosamente. Ahora puedes iniciar sesión.");
+        } else {
+            alert("Por favor, completa todos los campos.");
+        }
+    });
 
-console.log(books);
+    // Iniciar sesión validando contra el archivo users.json
+    loginS.addEventListener("click", async () => {
+        const email = document.getElementById("emailLogin").value;
+        const password = document.getElementById("passwordLogin").value;
 
-    books.forEach(book => {
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("bg-white", "p-4", "shadow-lg");
+        try {
+            const response = await fetch("../data/users.json");
+            const users = await response.json();
 
-        bookDiv.innerHTML = `
-      <img src="${book.image}" alt="${book.title}" class="w-32 h-40 object-cover">
-      <p class="text-center mt-2">${book.title}</p>
-     <button class="mt-2 w-full text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-      onclick="verDetalles(${book.id})">
-                Ver Detalle</button>
-    `;
+            const user = users.find(u => u.email === email && u.password === password);
 
-        booksList.appendChild(bookDiv);
+            if (user) {
+                alert(`Bienvenido, ${user.name} (${user.role})`);
+                localStorage.setItem("userLogin", JSON.stringify(user));
+                window.location.href = "pages/home.html";
+            } else {
+                alert("Correo o contraseña incorrectos.");
+            }
+        } catch (error) {
+            console.error("Error al cargar usuarios:", error);
+            alert("Hubo un problema al intentar iniciar sesión.");
+        }
     });
 });
-
-

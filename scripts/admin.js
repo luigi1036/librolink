@@ -1,44 +1,96 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Simulación de datos (Se pueden cargar desde una API)
-    const estadisticas = {
-        totalLibros: 150,
-        usuariosActivos: 34,
-        prestamosActivos: 20,
-        prestamosVencidos: 5
-    };
+    const buttonFirst = document.querySelector(".tab");
+    showContent(buttonFirst.dataset.tab, buttonFirst);
 
-    const libros = [
-        { id: 1, titulo: "El Principito", autor: "Antoine de Saint-Exupéry", disponible: "Sí" },
-        { id: 2, titulo: "1984", autor: "George Orwell", disponible: "No" },
-        { id: 3, titulo: "Cien Años de Soledad", autor: "Gabriel García Márquez", disponible: "Sí" }
-    ];
-
-    // Insertar estadísticas en el DOM
-    document.getElementById("totalLibros").textContent = estadisticas.totalLibros;
-    document.getElementById("usuariosActivos").textContent = estadisticas.usuariosActivos;
-    document.getElementById("prestamosActivos").textContent = estadisticas.prestamosActivos;
-    document.getElementById("prestamosVencidos").textContent = estadisticas.prestamosVencidos;
-
-    // Cargar libros en la tabla
-    const tablaLibros = document.getElementById("tablaLibros");
-    libros.forEach(libro => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-            <td class="p-2">${libro.id}</td>
-            <td class="p-2">${libro.titulo}</td>
-            <td class="p-2">${libro.autor}</td>
-            <td class="p-2">${libro.disponible}</td>
-            <td class="p-2">
-                <button class="bg-blue-500 text-white px-2 py-1 rounded edit-btn">Editar</button>
-                <button class="bg-red-500 text-white px-2 py-1 rounded delete-btn">Eliminar</button>
-            </td>
-        `;
-        tablaLibros.appendChild(fila);
-    });
-
-    // Cerrar sesión
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        alert("Cerrando sesión...");
-        window.location.href = "index.html"; // Redirige a la página principal
+    document.querySelectorAll(".tab").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const tabId = e.currentTarget.dataset.tab;
+            showContent(tabId, e.currentTarget);
+        });
     });
 });
+
+function showContent(tabId, boton) {
+
+    // Oculto todas las secciones
+    document.querySelectorAll('.contenido-tab').forEach(div => div.classList.add('hidden'));
+
+    // Muestro la sección activa
+    const tabContent = document.getElementById(tabId);
+    if (tabContent) tabContent.classList.remove('hidden');
+
+    // Estilos para el boton activo
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('bg-purple-900', 'text-white');
+        tab.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    boton.classList.remove('bg-gray-200', 'text-gray-700');
+    boton.classList.add('bg-purple-900', 'text-white');
+
+    // Carga los datos
+    loadData(tabId);
+}
+
+async function loadData(tab) {
+    const ruta = `../data/${tab}.json`;
+    console.log(ruta);
+    try {
+        const response = await fetch(ruta);
+        if (!response.ok) throw new Error(`No se pudo cargar el archivo ${tab}.json`);
+
+        const data = await response.json();
+
+        const table = document.querySelector(`#${tab} table tbody`);
+        if (!table) return;
+
+        table.innerHTML = "";
+
+        data.forEach(item => {
+            const row = document.createElement("tr");
+
+            if (tab === "data") {
+                row.innerHTML = `
+                    <td class="p-2">${item.id}</td>
+                    <td class="p-2">${item.title}</td>
+                    <td class="p-2">${item.author}</td>
+                    <td class="p-2">
+                        ${item.available
+                    ? '<span class="text-green-600 font-semibold">Disponible</span>'
+                    : '<span class="text-red-600 font-semibold">No disponible</span>'}
+                    </td>
+                `;
+            } else if (tab === "users") {
+                row.innerHTML = `
+                    <td class="p-2">${item.name}</td>
+                    <td class="p-2">${item.email}</td>
+                    <td class="p-2">${item.role}</td>
+                `;
+            } else if (tab === "loan") {
+                row.innerHTML = `
+                    <td class="p-2">${item.id}</td>
+                    <td class="p-2">${item.usuario}</td>
+                    <td class="p-2">${item.libro}</td>
+                    <td class="p-2">${item.fecha}</td>
+                    <td class="p-2">${item.estado}</td>
+                `;
+            }
+
+            table.appendChild(row);
+        });
+
+        updateCounters(tab, data.length);
+
+    } catch (error) {
+        console.error(`Error al cargar ${tab}:`, error);
+    }
+}
+
+function updateCounters(tab, total) {
+    if (tab === "data") {
+        document.getElementById("totalBooks").textContent = total;
+    } else if (tab === "users") {
+        document.getElementById("usersActives").textContent = total;
+    } else if (tab === "loan") {
+        document.getElementById("loanActives").textContent = total;
+    }
+}

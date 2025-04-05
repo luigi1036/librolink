@@ -1,11 +1,11 @@
 import { loadBooks, getBookById } from "./data.js";
 
-function verDetalles(id) {
+function showDetails(id) {
     console.log("este es el id" + id);
     window.location.href = `../pages/book.html?id=${id}&source=index`;
 }
 
-window.verDetalles = verDetalles;
+window.showDetails = showDetails;
 document.addEventListener("DOMContentLoaded", async function () {
     const books = await loadBooks();
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           <p class="mt-2 font-bold">${book.title}</p>
           <p class="text-sm text-gray-500">${book.author}</p>
            <button class="mt-2 w-full text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-      onclick="verDetalles(${book.id})">
+      onclick="showDetails(${book.id})">
                 Ver Detalle</button>
     \`;
         </div>

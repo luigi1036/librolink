@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca Online</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cuenta</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
 
 <!-- Navbar -->
-<nav class="bg-blue-600 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Biblioteca</h1>
-        <ul class="flex space-x-4">
-            <li><a href="#" class="hover:underline">Inicio</a></li>
-            <li><a href="#" class="hover:underline">Catálogo</a></li>
-            <li><a href="#" class="hover:underline">Mi Cuenta</a></li>
-            <li><a href="#" class="hover:underline">Contacto</a></li>
-        </ul>
+<nav class="bg-blue-600 p-4 text-white">
+  <div class="container mx-auto flex justify-between">
+    <a href="index.html" class="font-bold">Biblioteca</a>
+    <div>
+      <a href="catalog.html" class="mx-2">Catálogo</a>
+      <a href="#" class="mx-2 font-bold">Mi Cuenta</a>
+      <a href="contact.html" class="mx-2">Contacto</a>
     </div>
+  </div>
 </nav>
 
-<!-- Hero Section -->
-<header class="bg-gray-200 text-center py-20">
-    <h2 class="text-3xl font-bold">¡Encuentra y pide prestado tu próximo libro favorito!</h2>
-    <button class="bg-red-500 text-white px-6 py-2 mt-4 rounded hover:bg-red-700">
-        Explorar Libros
-    </button>
-</header>
+<!-- Contenido Principal -->
+<div class="container mx-auto p-6">
+  <div class="max-w-3xl mx-auto bg-white p-8 shadow-md rounded-lg">
+    <div class="flex justify-center mb-6">
+      <button id="btnRegister"
+              class="px-6 py-2 text-lg font-semibold rounded-l transition-colors duration-300
+           bg-gray-300 text-black hover:bg-blue-500 hover:text-white focus:outline-none">
+        Registro
+      </button>
 
-<!-- Libros Destacados -->
-<section class="py-10 container mx-auto">
-    <h3 class="text-2xl font-bold text-center mb-4">Libros Destacados</h3>
-    <div id="booksList" class="flex justify-center space-x-4"></div>
-</section>
+      <button id="btnLogin"
+              class="px-6 py-2 text-lg font-semibold rounded-r transition-colors duration-300
+           bg-gray-300 text-black hover:bg-blue-500 hover:text-white focus:outline-none">
+        Login
+      </button>
+    </div>
+
+    <!-- Sección de Registro -->
+    <div id="register" class="">
+      <h2 class="text-xl font-bold mb-4">Crear Cuenta</h2>
+      <input id="nameRegister" type="text" placeholder="Nombre" class="w-full p-2 border mb-2">
+      <input id="emailRegister" type="email" placeholder="Correo Electrónico" class="w-full p-2 border mb-2">
+      <input id="passwordRegister" type="password" placeholder="Contraseña" class="w-full p-2 border mb-2">
+      <button id="createAccount" class="w-full bg-red-500 text-white p-2 rounded">Crear Cuenta</button>
+    </div>
+
+    <!-- Sección de Login -->
+    <div id="login" class="hidden">
+      <h2 class="text-xl font-bold mb-4">Iniciar Sesión</h2>
+      <input id="emailLogin" type="email" placeholder="Correo Electrónico" class="w-full p-2 border mb-2">
+      <input id="passwordLogin" type="password" placeholder="Contraseña" class="w-full p-2 border mb-2">
+      <a href="#" class="text-blue-500 text-sm block mb-2">Olvidé mi contraseña</a>
+      <button id="loginS" class="w-full bg-red-500 text-white p-2 rounded">Iniciar Sesión</button>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-white text-center p-4">
-    <p>&copy; 2024 Biblioteca | <a href="#" class="underline">Términos y Condiciones</a></p>
+<footer class="footer">
+  <p>&copy; 2024 Biblioteca | Términos y Condiciones | Política de Privacidad</p>
 </footer>
 
 <script type="module" src="script.js"></script>

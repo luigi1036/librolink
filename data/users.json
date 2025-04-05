@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Luis",
+    "email": "luis@correo.com",
+    "password": "123456",
+    "role": "admin"
+  },
+  {
+    "name": "Dairon",
+    "email": "dairon@correo.com",
+    "password": "123456",
+    "role": "admin"
+  },
+  {
+    "name": "test",
+    "email": "test@correo.com",
+    "password": "123456",
+    "role": "user"
+  }
+]

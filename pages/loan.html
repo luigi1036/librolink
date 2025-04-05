@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mis Préstamos</title>
+  <link rel="stylesheet" href="../styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -11,60 +12,62 @@
 <!-- Navbar -->
 <nav class="bg-blue-600 p-4 text-white">
   <div class="container mx-auto flex justify-between">
-    <a href="index.html" class="font-bold">Biblioteca</a>
+    <a href="../index.html" class="font-bold">Biblioteca</a>
     <div>
-      <a href="catalogo.html" class="mx-2">Catálogo</a>
+      <a href="catalog.html" class="mx-2">Catálogo</a>
       <a href="cuenta.html" class="mx-2">Mi Cuenta</a>
-      <a href="prestamos.html" class="mx-2 font-bold">Préstamos</a>
+      <a href="#" class="mx-2 font-bold">Préstamos</a>
     </div>
   </div>
 </nav>
 
 <!-- Contenido Principal -->
 <div class="container mx-auto p-6">
-  <div class="max-w-4xl mx-auto bg-white p-8 shadow-md rounded-lg">
+  <div class="flex flex-col lg:flex-row gap-6">
 
     <!-- Perfil del Usuario -->
-    <div class="flex items-center space-x-4 mb-6">
-      <img src="https://via.placeholder.com/80" alt="Usuario" class="w-20 h-20 rounded-full">
-      <div>
+    <div class="lg:w-1/3 bg-white p-6 shadow-md rounded-lg">
+      <div class="flex flex-col items-center text-center">
+        <img src="https://via.placeholder.com/80" alt="Usuario" class="w-20 h-20 rounded-full mb-4">
         <h2 id="nombreUsuario" class="text-xl font-bold">Usuario</h2>
-        <p id="emailUsuario" class="text-gray-600">usuario@email.com</p>
+        <p id="emailUsuario" class="text-gray-600 mb-4">usuario@email.com</p>
+        <button class="bg-red-500 text-white px-4 py-2 rounded">Editar Perfil</button>
       </div>
-      <button class="ml-auto bg-red-500 text-white px-4 py-2 rounded">Editar Perfil</button>
     </div>
 
     <!-- Lista de Préstamos -->
-    <h3 class="text-lg font-bold mb-4">Mis Préstamos</h3>
-    <table class="w-full border-collapse border border-gray-300">
-      <thead>
-      <tr class="bg-gray-200">
-        <th class="border p-2">Título</th>
-        <th class="border p-2">Fecha de Préstamo</th>
-        <th class="border p-2">Fecha de Devolución</th>
-        <th class="border p-2">Estado</th>
-      </tr>
-      </thead>
-      <tbody id="listaPrestamos">
-      <tr>
-        <td colspan="4" class="text-center p-4">No hay préstamos registrados</td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="lg:w-2/3 bg-white p-6 shadow-md rounded-lg">
+      <h3 class="text-lg font-bold mb-4">Mis Préstamos</h3>
+      <table class="w-full border-collapse border border-gray-300">
+        <thead>
+        <tr class="bg-gray-200">
+          <th class="border p-2">Título</th>
+          <th class="border p-2">Fecha de Préstamo</th>
+          <th class="border p-2">Fecha de Devolución</th>
+          <th class="border p-2">Estado</th>
+        </tr>
+        </thead>
+        <tbody id="listaPrestamos">
+        <tr>
+          <td colspan="4" class="text-center p-4">No hay préstamos registrados</td>
+        </tr>
+        </tbody>
+      </table>
 
-    <!-- Botón para Solicitar Nuevo Préstamo -->
-    <div class="text-center mt-6">
-      <button id="btnNuevoPrestamo" class="bg-red-500 text-white px-4 py-2 rounded">Solicitar Nuevo Préstamo</button>
+      <!-- Botón para Solicitar Nuevo Préstamo -->
+      <div class="text-center mt-6">
+        <button id="btnNuevoPrestamo" class="bg-red-500 text-white px-4 py-2 rounded">Solicitar Nuevo Préstamo</button>
+      </div>
     </div>
 
   </div>
 </div>
 
 <!-- Footer -->
-<footer class="bg-blue-600 text-white text-center p-4 mt-6">
+<footer class="footer">
   <p>&copy; 2024 Biblioteca | Términos y Condiciones | Política de Privacidad</p>
 </footer>
 
-<script src="prestamos.js"></script>
+<script src="../scripts/loan.js"></script>
 </body>
 </html>

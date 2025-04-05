@@ -1,6 +1,3 @@
-/* styles.css */
-
-/* Asegurar que el footer esté siempre abajo */
 html, body {
     height: 100%;
     display: flex;
@@ -8,21 +5,19 @@ html, body {
 }
 
 main {
-    flex: 1; /* Ocupa el espacio disponible antes del footer */
+    flex: 1;
 }
 
-/* Navbar estilizado */
 .navbar {
-    background-color: #2563eb; /* Azul */
+    background-color: blue;
     color: white;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem; /* Separación del contenido */
+    margin-bottom: 1.5rem;
 }
 
-/* Estilos del footer */
 .footer {
-    background-color: #1f2937; /* Gris oscuro */
+    background-color: blue;
     color: white;
     text-align: center;
     padding: 1rem;

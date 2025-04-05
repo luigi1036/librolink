@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "usuario": "Luis",
+    "libro": "Cien años de soledad",
+    "fecha": "2025-03-12",
+    "estado": "devuelto"
+  },
+  {
+    "id": 2,
+    "usuario": "Luis",
+    "libro": "El Principito",
+    "fecha": "2025-03-28",
+    "estado": "activo"
+  },
+  {
+    "id": 3,
+    "usuario": "Dairon",
+    "libro": "El Principito 2",
+    "fecha": "2025-03-17",
+    "estado": "activo"
+  },
+  {
+    "id": 4,
+    "usuario": "Dairon",
+    "libro": "1984",
+    "fecha": "2025-03-08",
+    "estado": "devuelto"
+  },
+  {
+    "id": 5,
+    "usuario": "test",
+    "libro": "Cien años de soledad",
+    "fecha": "2025-03-22",
+    "estado": "activo"
+  },
+  {
+    "id": 6,
+    "usuario": "test",
+    "libro": "El Principito",
+    "fecha": "2025-03-14",
+    "estado": "devuelto"
+  }
+]

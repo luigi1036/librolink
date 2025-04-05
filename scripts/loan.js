@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nombreUsuario.textContent = usuario.nombre;
     emailUsuario.textContent = usuario.email;
 
-    // Simulación de préstamos guardados en localStorage
+
     let prestamos = JSON.parse(localStorage.getItem("prestamos")) || [];
 
     function cargarPrestamos() {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cargar préstamos al iniciar
     cargarPrestamos();
 
-    // Evento para solicitar un nuevo préstamo (simulación)
+
     btnNuevoPrestamo.addEventListener("click", () => {
         const nuevoPrestamo = {
             titulo: "El Principito",
