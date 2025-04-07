@@ -61,46 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Hubo un problema al intentar iniciar sesión.");
         }
     });
+
+
+
     
     
-    // Cargar y mostrar libros desde data.json
-    fetch(`${basePath}data/data.json`)
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('booksContainer'); // Contenedor donde se mostrarán los libros
-
-            data.forEach(book => {
-                // Crear un contenedor para cada libro
-                const bookCard = document.createElement('div');
-                bookCard.classList.add('book-card', 'p-4', 'border', 'rounded', 'shadow-md', 'bg-white');
-
-                // Crear la etiqueta <img> para la imagen del libro
-                const bookImage = document.createElement('img');
-                bookImage.src = book.image; // Ruta de la imagen desde el JSON
-                bookImage.alt = book.title; // Texto alternativo
-                bookImage.classList.add('w-full', 'h-auto', 'mb-2');
-
-                // Crear un título para el libro
-                const bookTitle = document.createElement('h3');
-                bookTitle.textContent = book.title;
-                bookTitle.classList.add('text-lg', 'font-bold', 'mb-2');
-
-                // Crear un botón para ver detalles
-                const bookButton = document.createElement('button');
-                bookButton.textContent = 'Ver Detalle';
-                bookButton.classList.add('bg-red-500', 'text-white', 'px-4', 'py-2', 'rounded');
-                bookButton.addEventListener('click', () => {
-                    alert(`Detalles del libro:\n\nTítulo: ${book.title}\nAutor: ${book.author}\nSinopsis: ${book.synopsis}`);
-                });
-
-                // Agregar la imagen, el título y el botón al contenedor del libro
-                bookCard.appendChild(bookImage);
-                bookCard.appendChild(bookTitle);
-                bookCard.appendChild(bookButton);
-
-                // Agregar el contenedor del libro al contenedor principal
-                container.appendChild(bookCard);
-            });
-        })
-        .catch(error => console.error('Error al cargar el archivo JSON:', error));
 });
