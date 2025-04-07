@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Cien años de soledad",
     "author": "Gabriel García Márquez",
-    "image": "img/cien_anos.jpg",
+    "image": "img/cien_anos.jpeg",
     "synopsis": "Una historia mágica de la familia Buendía.",
     "editorial": "Sudamericana",
     "year": 1967,
@@ -14,7 +14,7 @@
     "id": 2,
     "title": "1984",
     "author": "George Orwell",
-    "image": "img/1984.jpg",
+    "image": "img/1984.jpeg",
     "synopsis": "Un mundo distópico controlado por el Gran Hermano.",
     "editorial": "Secker & Warburg",
     "year": 1949,
@@ -29,7 +29,7 @@
     "year": 1943,
     "gender": "Infantil",
     "available": true,
-    "image": "https://via.placeholder.com/200"
+    "image": "img/El_principito.jpeg"
   },
   { "id": 4,
     "title": "El Principito 2",
@@ -39,7 +39,52 @@
     "year": 1943,
     "gender": "Infantil",
     "available": true,
-    "image": "https://via.placeholder.com/200"
+    "image": "img/El_principito_2.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "Rayuela",
+    "author": "Julio Cortázar",
+    "synopsis": "Una novela experimental que desafía la narrativa tradicional.",
+    "editorial": "Sudamericana",
+    "year": 1963,
+    "gender": "Novela",
+    "available": true,
+    "image": "img/Rayuela.jpeg"
+  },
+  {
+    "id": 6,
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "synopsis": "Una sociedad donde los libros están prohibidos.",
+    "editorial": "Ballantine Books",
+    "year": 1953,
+    "gender": "Ciencia Ficción",
+    "available": false,
+    "image": "img/fahrenheit_451.jpeg"
+  },
+  {
+    "id": 7,
+    "title": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "synopsis": "Las aventuras del ingenioso hidalgo Don Quijote y su escudero Sancho.",
+    "editorial": "Francisco de Robles",
+    "year": 1605,
+    "gender": "Clásico",
+    "available": true,
+    "image": "img/don_quijote.jpeg"
+  },
+  {
+    "id": 8,
+    "title": "La sombra del viento",
+    "author": "Carlos Ruiz Zafón",
+    "synopsis": "Un joven descubre un libro que cambiará su vida en la Barcelona de la posguerra.",
+    "editorial": "Planeta",
+    "year": 2001,
+    "gender": "Misterio",
+    "available": true,
+    "image": "img/sombra_viento.jpeg"
   }
+
   ]
 
