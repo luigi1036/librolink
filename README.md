@@ -91,7 +91,7 @@ LibroLink es una aplicación web para la gestión de una biblioteca online. Perm
 
 ## Créditos
 
-Desarrollado por [luigi1036](https://github.com/luigi1036).
+Desarrollado por [luigi1036](https://github.com/luigi1036).  y https://github.com/dairon2 
 
 ---
 
